@@ -11,12 +11,10 @@ class Customify
 	static $path;
 
 	/**
-	 * @var Customify_Customizer
-	 */
-	public $customizer = null;
-
-	/**
-	 * Add functions to hooks
+	 * Main Customify Instance.
+	 * 
+	 * @since 0.0.1
+	 * @since 0.5.0 Modernization to PHP 7.4+
 	 */
 	function init_hooks()
 	{
@@ -306,8 +304,9 @@ class Customify
 		$css_files = apply_filters(
 			'customify/theme/css',
 			array(
-				'google-font' => Customify_Customizer_Auto_CSS::get_instance()->get_font_url(),
-				'style'       => $this->get_style_uri(),
+				'google-font'   => Customify_Customizer_Auto_CSS::get_instance()->get_font_url(),
+				'design-system' => esc_url( get_template_directory_uri() ) . '/assets/css/design-system.css',
+				'style'         => $this->get_style_uri(),
 			)
 		);
 
@@ -416,6 +415,8 @@ class Customify
 			'/inc/blog/class-posts-layout.php',
 			// Blog posts layout.
 			'/inc/blog/functions-posts-layout.php',
+			// Block patterns.
+			'/inc/block-patterns.php',
 		);
 
 		foreach ($files as $file) {
