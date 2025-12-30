@@ -1,0 +1,98 @@
+/**
+ * Customify Modern Design System
+ *
+ * This file defines the core design tokens using CSS variables.
+ */
+
+:root {
+    /* --- Modern Color Palette (Vibrant & Deep) --- */
+    --c-primary: #6366f1; /* Indigo */
+    --c-primary-hover: #4f46e5;
+    --c-secondary: #ec4899; /* Pink */
+    --c-secondary-hover: #db2777;
+    --c-accent: #f59e0b; /* Amber */
+    
+    --c-bg: #ffffff;
+    --c-bg-soft: #f8fafc;
+    --c-text: #0f172a;
+    --c-text-muted: #64748b;
+    
+    /* Dark Mode Tokens (Prepared for future implementation) */
+    --c-dark-bg: #0f172a;
+    --c-dark-bg-soft: #1e293b;
+    --c-dark-text: #f8fafc;
+    --c-dark-text-muted: #94a3b8;
+
+    /* --- Fluid Typography (using clamp) --- */
+    /* Mobile -> Desktop scaling */
+    --f-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+    --f-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+    --f-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+    --f-lg: clamp(1.125rem, 1.05rem + 0.375vw, 1.25rem);
+    --f-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+    --f-2xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+    --f-3xl: clamp(2rem, 1.7rem + 1.5vw, 2.75rem);
+
+    /* --- Spacing System --- */
+    --s-1: 0.25rem;
+    --s-2: 0.5rem;
+    --s-3: 0.75rem;
+    --s-4: 1rem;
+    --s-6: 1.5rem;
+    --s-8: 2rem;
+    --s-12: 3rem;
+    --s-16: 4rem;
+
+    /* --- Shadows & Blur (Glassmorphism) --- */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-blur: blur(12px);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.2);
+
+    /* --- Transitions --- */
+    --t-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    --t-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base resets & utilities using the system */
+body {
+    background-color: var(--c-bg);
+    color: var(--c-text);
+    font-size: var(--f-base);
+    line-height: 1.6;
+    transition: background-color var(--t-normal), color var(--t-normal);
+}
+
+h1 { font-size: var(--f-3xl); font-weight: 800; letter-spacing: -0.025em; }
+h2 { font-size: var(--f-2xl); font-weight: 700; }
+h3 { font-size: var(--f-xl); font-weight: 600; }
+
+.vibrant-btn {
+    background-color: var(--c-primary);
+    color: white;
+    padding: var(--s-2) var(--s-6);
+    border-radius: 9999px;
+    font-weight: 600;
+    transition: all var(--t-fast);
+    box-shadow: var(--shadow-md);
+    border: none;
+    cursor: pointer;
+}
+
+.vibrant-btn:hover {
+    background-color: var(--c-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    border-radius: var(--s-4);
+    box-shadow: var(--shadow-md);
+    padding: var(--s-6);
+}
